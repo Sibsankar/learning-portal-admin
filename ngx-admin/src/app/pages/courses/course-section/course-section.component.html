@@ -1,0 +1,17 @@
+
+<nb-card>
+  
+    <nb-card-header>
+      Courses Section List
+      <a routerLink="/pages/courses/add-course-section"><button  nbButton [status]="btnstatus" hero>
+       Add Course Section
+      </button>
+    </a>
+    </nb-card-header>
+    
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+  

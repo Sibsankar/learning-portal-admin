@@ -1,0 +1,84 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+      <nb-card class="inline-form-card">
+        <nb-card-header>Inline form</nb-card-header>
+        <nb-card-body>
+          <form class="form-inline">
+            <input type="text" nbInput fullWidth placeholder="Jane Doe">
+            <input type="text" nbInput fullWidth placeholder="Email">
+            <nb-checkbox>Remember me</nb-checkbox>
+            <button type="submit" nbButton status="primary">Submit</button>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <nb-card>
+        <nb-card-header>Add Course Topic</nb-card-header>
+        <nb-card-body>
+          <form>
+           
+            <div class="form-group row">
+                <label for="inputEmail1" class="label col-sm-3 col-form-label">Select Course Category</label>
+                <div class="col-sm-9">
+                  <nb-select selected="1">
+                    <nb-option value="1">Option 1</nb-option>
+                    <nb-option value="2">Option 2</nb-option>
+                    <nb-option value="3">Option 3</nb-option>
+                    <nb-option value="4">Option 4</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="inputEmail1" class="label col-sm-3 col-form-label">Select Course Name</label>
+                <div class="col-sm-9">
+                  <nb-select selected="1">
+                    <nb-option value="1">Course 1</nb-option>
+                    <nb-option value="2">Course 2</nb-option>
+                    <nb-option value="3">Course 3</nb-option>
+                    <nb-option value="4">Course 4</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Topic Name</label>
+              <div class="col-sm-9">
+                <input type="text" nbInput fullWidth id="inputEmail1" placeholder="Course Topic Name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ctitle" class="label col-sm-3 col-form-label">Course Topic Description</label>
+              <div class="col-sm-9">
+                <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Enter Course Topic Description"></textarea>
+              </div>
+            </div>
+           
+            <div class="form-group row">
+              <label class="col-sm-3 label">Status</label>
+              <div class="col-sm-9">
+                <nb-radio-group>
+                  <nb-radio>Active</nb-radio>
+                  <nb-radio>Inactive</nb-radio>
+                  <!-- <nb-radio disabled>Disabled Option</nb-radio> -->
+                </nb-radio-group>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-3 col-sm-9">
+                <button type="submit" nbButton status="primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+  
+      
+    </div>
+  
+    
+  </div>
