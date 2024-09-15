@@ -1,12 +1,7 @@
-
-
 import { Component } from '@angular/core';
-
-
-
 import { LocalDataSource } from 'ng2-smart-table';
-
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { CourseCategoriesService } from '../../../services/course-categories.service';
 
 @Component({
   selector: 'ngx-course-category',
@@ -14,11 +9,8 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   styleUrls: ['./course-category.component.scss']
 })
 
-
-
-
 export class CourseCategoryComponent {
-public btnstatus = 'primary';
+  public btnstatus = 'primary';
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -35,8 +27,8 @@ public btnstatus = 'primary';
       confirmDelete: true,
     },
     columns: {
-      
-      CategoryName: {
+
+      course_category_name: {
         title: 'Course Category Name',
         type: 'string',
       },
@@ -48,34 +40,17 @@ public btnstatus = 'primary';
         title: 'Status',
         type: 'string',
       }
-      
+
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private courseCatergoryService: CourseCategoriesService) {
     //const data = this.service.getData();
-
-    const data = [{
-      id: 1,
-      CategoryName: 'Software Developer',
-      CategoryDescription: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }, {
-      id: 2,
-      CategoryName: 'Python',
-      CategoryDescription: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }, {
-      id: 3,
-      CategoryName: 'Devops',
-      CategoryDescription: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }];
-
-    console.log(data);
-    this.source.load(data);
+    this.courseCatergoryService.getCategories().subscribe((res) => {
+      this.source.load(res);
+    });
   }
 
   onDeleteConfirm(event): void {
