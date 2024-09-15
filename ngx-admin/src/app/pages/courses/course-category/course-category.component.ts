@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { CourseCategoriesService } from '../../../services/course-categories.service';
 
+
 @Component({
   selector: 'ngx-course-category',
   templateUrl: './course-category.component.html',
@@ -52,6 +53,9 @@ export class CourseCategoryComponent {
       this.source.load(res);
     });
   }
+
+
+
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {

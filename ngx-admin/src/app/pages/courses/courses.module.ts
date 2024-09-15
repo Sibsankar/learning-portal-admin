@@ -6,6 +6,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CoursesComponent } from './courses.component';
 
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 import {
@@ -52,6 +53,7 @@ import { AddCourseSectionComponent } from './add-course-section/add-course-secti
     NbRadioModule,
     NbDatepickerModule,
     NbSelectModule,
+    FormsModule
 
   ],
   declarations: [
