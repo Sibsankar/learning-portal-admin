@@ -14,49 +14,51 @@
     </div>
   </div> -->
 
-  <div class="row">
-    <div class="col-md-12">
-      <nb-card>
-        <nb-card-header>Add Course Details</nb-card-header>
-        <nb-card-body>
-          <form>
-           
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Add Course Details</nb-card-header>
+      <nb-card-body>
+        <form #categoryForm="ngForm">
+          <div class="form-group row">
+            <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Category Name</label>
+            <div class="col-sm-9">
+              <input type="text" nbInput fullWidth id="inputEmail1" placeholder="Course Category Name" [{ngModel}]="addCategoryForm.course_category_name" #course_category_name="ngModel">
+              <div *ngIf="course_category_name.errors && isSubmitted" class="alert alert-danger validationError">
+                <div [hidden]="!course_category_name.errors?.['required']">
+                  Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-group row">
+            <label for="ctitle" class="label col-sm-3 col-form-label">Course Category Description</label>
+            <div class="col-sm-9">
+              <input type="text" nbInput fullWidth id="ctitle" placeholder="Course Category Description">
+            </div>
+          </div> -->
+
+          <!-- <div class="form-group row">
+            <label class="col-sm-3 label">Status</label>
+            <div class="col-sm-9">
+              <nb-radio-group>
+                <nb-radio>Active</nb-radio>
+                <nb-radio>Inactive</nb-radio>
+                <nb-radio disabled>Disabled Option</nb-radio>
+              </nb-radio-group>
+            </div>
+          </div> -->
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" nbButton status="primary" (click)="AddEmployee(categoryForm.form.valid)">Submit</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
 
 
-            <div class="form-group row">
-              <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Category Name</label>
-              <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="inputEmail1" placeholder="Course Category Name">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="ctitle" class="label col-sm-3 col-form-label">Course Category Description</label>
-              <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="ctitle" placeholder="Course Category Description">
-              </div>
-            </div>
-           
-            <div class="form-group row">
-              <label class="col-sm-3 label">Status</label>
-              <div class="col-sm-9">
-                <nb-radio-group>
-                  <nb-radio>Active</nb-radio>
-                  <nb-radio>Inactive</nb-radio>
-                  <!-- <nb-radio disabled>Disabled Option</nb-radio> -->
-                </nb-radio-group>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="offset-sm-3 col-sm-9">
-                <button type="submit" nbButton status="primary">Submit</button>
-              </div>
-            </div>
-          </form>
-        </nb-card-body>
-      </nb-card>
-  
-      
-    </div>
-  
-    
   </div>
+
+
+</div>
