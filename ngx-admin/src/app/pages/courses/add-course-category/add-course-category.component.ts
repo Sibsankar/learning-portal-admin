@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CourseCategoriesService } from '../../../services/course-categories.service';
 
 @Component({
   selector: 'ngx-add-course-category',
@@ -6,20 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-course-category.component.scss']
 })
 export class AddCourseCategoryComponent {
-//addCategoryFormData: any;
+  constructor(private courseCatergoryService: CourseCategoriesService, private toastrService: ToastrService) {}
 
+  public addCategoryFormData = {
+    course_category_name: '',
+    status: '',
+    CategoryDescription: '',
+    level_type: 1,
+    parent_id: 0
+  }
 
-public addCategoryFormData = {
-  course_category_name: 'fgfdgdfgfdgdfgf',
-  status: '',
-  CategoryDescription: 'rrrrrrrrrrrrrrrggggggggggggggggggggggggggggggggggggggggg'
-}
-
-
-
-getCategoryData(){
-  console.log('Test.....................');
-}
+  addCategory(){
+    this.courseCatergoryService.addCategory(this.addCategoryFormData).subscribe((res) => {
+      if (res.resCode == 1) {
+        this.toastrService.success(res.resMessage);
+      } else {
+        this.toastrService.error(res.resMessage);
+      }
+      this.toastrService.error('Something went wrong');
+    });
+  }
 
 
 }

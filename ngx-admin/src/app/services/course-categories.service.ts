@@ -17,7 +17,7 @@ export class CourseCategoriesService {
   }
 
   public addCategory(model: any): Observable<any> {
-    return this.http.get<any>(this.baseUrl+'coursecategories', model);
+    return this.http.post<any>(this.baseUrl+'coursecategories', model);
   }
 
 }

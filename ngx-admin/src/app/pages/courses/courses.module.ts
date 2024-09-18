@@ -7,6 +7,7 @@ import { CoursesComponent } from './courses.component';
 
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 import {
@@ -53,7 +54,12 @@ import { AddCourseSectionComponent } from './add-course-section/add-course-secti
     NbRadioModule,
     NbDatepickerModule,
     NbSelectModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 15000, // 15 seconds
+      closeButton: true,
+      progressBar: true,
+    }),
 
   ],
   declarations: [
