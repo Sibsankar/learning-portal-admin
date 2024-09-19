@@ -20,4 +20,20 @@ export class CourseCategoriesService {
     return this.http.post<any>(this.baseUrl+'coursecategories', model);
   }
 
+  public getSections(course_code: String): Observable<any> {
+    return this.http.get<any>(this.baseUrl+'section?course_code='+course_code);
+  }
+
+  public addSection(model: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl+'section', model);
+  }
+
+  public getTopics(course_code: String, section_id: String, topic_id: String): Observable<any> {
+    return this.http.get<any>(this.baseUrl+'topic?course_code='+course_code+'/'+section_id+'/'+topic_id);
+  }
+
+  public addTopic(model: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl+'topic', model);
+  }
+
 }
