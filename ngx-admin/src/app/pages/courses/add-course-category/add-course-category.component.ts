@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CourseCategoriesService } from '../../../services/course-categories.service';
 
@@ -7,7 +7,7 @@ import { CourseCategoriesService } from '../../../services/course-categories.ser
   templateUrl: './add-course-category.component.html',
   styleUrls: ['./add-course-category.component.scss']
 })
-export class AddCourseCategoryComponent {
+export class AddCourseCategoryComponent implements OnInit {
   constructor(private courseCatergoryService: CourseCategoriesService, private toastrService: ToastrService) {}
 
   public addCategoryFormData = {
@@ -18,6 +18,32 @@ export class AddCourseCategoryComponent {
     parent_id: 0
   }
 
+  public parentCats = '';
+  public subCats = '';
+
+  ngOnInit() {
+    this.getParentCategories();
+   }
+
+  getParentCategories() {
+    this.courseCatergoryService.getCategories('0').subscribe((res) => {
+      this.parentCats = res;
+      console.log('this.parentCats ->', this.parentCats);
+    });
+  }
+
+  setSubCategory(cat_id) {
+    this.addCategoryFormData.parent_id = cat_id;
+  }
+
+  getSubCategories(parent_cat) {
+    console.log('par_cat', parent_cat);
+    this.addCategoryFormData.parent_id = parent_cat;
+    this.courseCatergoryService.getCategories(parent_cat).subscribe((res) => {
+      this.subCats = res;
+    });
+  }
+
   addCategory(){
     this.courseCatergoryService.addCategory(this.addCategoryFormData).subscribe((res) => {
       if (res.resCode == 1) {
@@ -25,7 +51,6 @@ export class AddCourseCategoryComponent {
       } else {
         this.toastrService.error(res.resMessage);
       }
-      this.toastrService.error('Something went wrong');
     });
   }
 

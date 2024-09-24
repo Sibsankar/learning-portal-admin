@@ -12,8 +12,9 @@ export class CourseCategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  public getCategories(): Observable<any> {
-    return this.http.get<any>(this.baseUrl+'coursecategories?level_type=1&parent_id=0');
+  public getCategories(parent_id?: any): Observable<any> {
+    const parentId = ((parent_id) ? '&parent_id='+parent_id : '')
+    return this.http.get<any>(this.baseUrl+'coursecategories?level_type=1'+parentId);
   }
 
   public addCategory(model: any): Observable<any> {
