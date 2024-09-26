@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-
-
-
 import { LocalDataSource } from 'ng2-smart-table';
-
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { CourseCategoriesService } from '../../../services/course-categories.service';
 
 @Component({
   selector: 'ngx-course-list',
@@ -58,9 +55,20 @@ public btnstatus = 'primary';
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+  // constructor(private service: SmartTableData) {
+  //   const data = this.service.getData();
+  //   this.source.load(data);
+  // }
+
+
+  public course_category_id='';
+
+
+  constructor(private courseCatergoryService: CourseCategoriesService) {
+    //const data = this.service.getData();
+    this.courseCatergoryService.getCourses(this.course_category_id).subscribe((res) => {
+      this.source.load(res);
+    });
   }
 
   onDeleteConfirm(event): void {

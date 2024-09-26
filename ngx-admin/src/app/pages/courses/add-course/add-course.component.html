@@ -19,39 +19,96 @@
       <nb-card>
         <nb-card-header>Add Course Details</nb-card-header>
         <nb-card-body>
-          <form>
+         
            
 
             <div class="form-group row">
               <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Category</label>
               <div class="col-sm-9">
-                <nb-select selected="1">
-                  <nb-option value="1">Option 1</nb-option>
-                  <nb-option value="2">Option 2</nb-option>
-                  <nb-option value="3">Option 3</nb-option>
-                  <nb-option value="4">Option 4</nb-option>
-                </nb-select>
+                <select
+      class="form-control"
+      id="course_category_id"
+      name="course_category_id"
+      [(ngModel)]="addCourseFormData.course_category_id"
+    >
+      <option value="" disabled>Choose a Category</option>
+      <option *ngFor="let cats of allCategories" [ngValue]="cats.course_category_id">{{ cats.course_category_name }}</option>
+    </select>
+                  
+            
+                <!-- <ng-select placeholder="Select Category" [(ngModel)]="addCourseFormData.course_category_id">
+                  
+                  <ng-option  *ngFor="let cats of allCategories" [ngValue]="cats.course_category_id">{{ cats.course_category_name }}</ng-option>
+                  
+                </ng-select> -->
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Name</label>
+              <label for="inputEmail11" class="label col-sm-3 col-form-label">Course Name</label>
               <div class="col-sm-9">
-                <input type="text" nbInput fullWidth id="inputEmail1" placeholder="Course Name">
+                <input type="text" nbInput fullWidth id="inputEmail1" placeholder="Course Name" [(ngModel)]="addCourseFormData.course_title_name">
               </div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label for="ctitle" class="label col-sm-3 col-form-label">Course Title</label>
               <div class="col-sm-9">
                 <input type="text" nbInput fullWidth id="ctitle" placeholder="Course Title">
               </div>
-            </div>
+            </div> -->
+
             <div class="form-group row">
-                <label for="csd" class="label col-sm-3 col-form-label">Course Short Description</label>
+              <label for="csd" class="label col-sm-3 col-form-label">Course type</label>
+              <div class="col-sm-9">
+                <input type="number" nbInput fullWidth id="csd" placeholder="Course Type">
+              </div>
+            </div>
+
+            
+            <div class="form-group row">
+              <label for="inputEmail1" class="label col-sm-3 col-form-label">Course Rating</label>
+              <div class="col-sm-9">
+                <nb-select placeholder="Select Rating" [(ngModel)]="addCourseFormData.rating">
+                  
+                 <nb-option value="1.0">1</nb-option>
+                 <nb-option value="2.0">2</nb-option>
+                 <nb-option value="3.0">3</nb-option>
+                 <nb-option value="4.0">4</nb-option>
+                 <nb-option value="5.0">5</nb-option>
+                </nb-select>
+              </div>
+            </div>
+            
+
+            <div class="form-group row">
+              <label for="csd" class="label col-sm-3 col-form-label">Students enrolled</label>
+              <div class="col-sm-9">
+                <input type="number" nbInput fullWidth id="csd" placeholder="Students Enrolled" [(ngModel)]="addCourseFormData.students_enrolled">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="csd" class="label col-sm-3 col-form-label">Course Tags</label>
+              <div class="col-sm-9">
+                <input type="text" nbInput fullWidth id="csd" placeholder="Course Tags" [(ngModel)]="addCourseFormData.course_tags">
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="csd" class="label col-sm-3 col-form-label">Course Introduction</label>
                 <div class="col-sm-9">
-                  <input type="text" nbInput fullWidth id="csd" placeholder="Course Short Description">
+                  <ngx-tiny-mce [(ngModel)]="addCourseFormData.course_introduction"></ngx-tiny-mce>  
                 </div>
               </div>
+
+              <div class="form-group row">
+                <label for="csd" class="label col-sm-3 col-form-label">Course Video Link</label>
+                <div class="col-sm-9">
+                  <input type="text" nbInput fullWidth id="csd" placeholder="Course Video Link" [(ngModel)]="addCourseFormData.course_preview_video_link">
+                </div>
+              </div>
+
             <div class="form-group row">
               <label class="col-sm-3 label">Status</label>
               <div class="col-sm-9">
@@ -64,10 +121,10 @@
             </div>
             <div class="form-group row">
               <div class="offset-sm-3 col-sm-9">
-                <button type="submit" nbButton status="primary">Submit</button>
+                <button type="button" nbButton status="primary" (click)="addCourses()">Submit</button>
               </div>
             </div>
-          </form>
+        
         </nb-card-body>
       </nb-card>
   

@@ -10,9 +10,9 @@ export class AddCourseCategoryComponent {
 
 
 public addCategoryFormData = {
-  course_category_name: 'fgfdgdfgfdgdfgf',
+  course_category_name: '',
   status: '',
-  CategoryDescription: 'rrrrrrrrrrrrrrrggggggggggggggggggggggggggggggggggggggggg'
+  CategoryDescription: ''
 }
 
 
