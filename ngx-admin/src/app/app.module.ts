@@ -12,6 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -43,6 +44,11 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 15000, // 15 seconds
+      closeButton: true,
+      progressBar: true,
+    }),
   ],
   bootstrap: [AppComponent],
 })
