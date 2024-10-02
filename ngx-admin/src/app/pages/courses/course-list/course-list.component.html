@@ -3,14 +3,14 @@
   
     <nb-card-header>
       Courses List
-      <a routerLink="/pages/courses/add-course"><button  nbButton [status]="btnstatus" hero>
+      <a routerLink="/pages/courses/add-course/0"><button  nbButton [status]="btnstatus" hero>
        Add Course
       </button>
     </a>
     </nb-card-header>
     
     <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"  (edit)="onEdit($event)" >
       </ng2-smart-table>
     </nb-card-body>
   </nb-card>

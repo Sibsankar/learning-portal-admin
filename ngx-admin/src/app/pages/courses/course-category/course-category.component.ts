@@ -13,6 +13,17 @@ import { CourseCategoriesService } from '../../../services/course-categories.ser
 export class CourseCategoryComponent {
   public btnstatus = 'primary';
   settings = {
+    actions: {
+      add: false,
+      position: 'right',
+      mode: 'external',
+      custom: [
+        {
+          name: 'Button',
+          title: '<i class="nb-eye"></i> ',
+        }
+      ],
+      },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -23,6 +34,7 @@ export class CourseCategoryComponent {
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
     },
+    
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
@@ -54,7 +66,10 @@ export class CourseCategoryComponent {
     });
   }
 
-
+  onView(event): void {
+    console.log(event)
+    //this.router.navigateByUrl('/pages/courses/add-course/'+event.data.course_details_id);
+  }
 
 
   onDeleteConfirm(event): void {

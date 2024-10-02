@@ -19,7 +19,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Course List',
-        link: '/pages/courses/course-list',
+        link: '/pages/courses/course-list/3',
       },
       {
         title: 'Course Categories',

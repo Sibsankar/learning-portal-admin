@@ -17,11 +17,11 @@ const routes: Routes = [{
   component: CoursesComponent,
   children: [
     {
-      path: 'course-list',
+      path: 'course-list/:course_category_id',
       component: CourseListComponent,
     },
     {
-      path: 'add-course',
+      path: 'add-course/:id',
       component: AddCourseComponent
     },
     {
