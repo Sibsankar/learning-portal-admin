@@ -1,17 +1,31 @@
+<div class="row">
+  <div class="col-sm-6">
+    <nb-select fullWidth (selectedChange)="getCourses($event)" placeholder="Select Category">
+      <nb-option-group *ngFor="let cat of categories">
+      <nb-option  [value]="cat.course_category_id"> {{cat.course_category_name }}</nb-option>
+      </nb-option-group>
+    </nb-select>
+  </div>
+  <div class="col-sm-6">
+    <nb-select fullWidth (selectedChange)="getSections($event)" placeholder="Select Course">
+      <nb-option-group *ngFor="let course of courses">
+      <nb-option  [value]="course.course_code"> {{course.course_title_name }}</nb-option>
+      </nb-option-group>
+    </nb-select>
+  </div>
+</div>
 
 <nb-card>
-  
-    <nb-card-header>
-      Courses Section List
-      <a routerLink="/pages/courses/add-course-section"><button  nbButton [status]="btnstatus" hero>
-       Add Course Section
+  <nb-card-header>
+    Courses Section List
+    <a routerLink="/pages/courses/add-course-section"><button nbButton [status]="btnstatus" hero>
+        Add Course Section
       </button>
     </a>
-    </nb-card-header>
-    
-    <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-      </ng2-smart-table>
-    </nb-card-body>
-  </nb-card>
-  
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

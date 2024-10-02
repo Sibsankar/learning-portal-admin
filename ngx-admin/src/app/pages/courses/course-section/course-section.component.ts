@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { CourseCategoriesService } from '../../../services/course-categories.service';
 
 @Component({
   selector: 'ngx-course-section',
@@ -27,12 +28,12 @@ public btnstatus = 'primary';
     },
     columns: {
       
-      SectionName: {
-        title: 'Course Section Name',
+      section_title: {
+        title: 'Section Title',
         type: 'string',
       },
-      CourseName: {
-        title: 'Course Name',
+      sequence_number: {
+        title: 'Sequence Number',
         type: 'string',
       },
       status: {
@@ -45,28 +46,32 @@ public btnstatus = 'primary';
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
-    //const data = this.service.getData();
+  constructor(private courseCatergoryService: CourseCategoriesService) {}
 
-    const data = [{
-      id: 1,
-      CourseName: 'Software Developer',
-      SectionName: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }, {
-      id: 2,
-      CourseName: 'Python',
-      SectionName: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }, {
-      id: 3,
-      CourseName: 'Devops',
-      SectionName: 'Test fdlgjldfhghdfghdfghdflhg',
-      status: 'Active'
-    }];
+  public categories = [];
+  public courses = [];
+  public topics = [];
 
-    console.log(data);
-    this.source.load(data);
+  ngOnInit() {
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.courseCatergoryService.getCategories('0').subscribe((res) => {
+      this.categories = res;
+    });
+  }
+
+  getCourses(category_id) {
+    this.courseCatergoryService.getCourses(category_id).subscribe((res) => {
+      this.courses = res;
+    });
+  }
+
+  getSections(course_code) {
+    this.courseCatergoryService.getSections(course_code).subscribe((res) => {
+      this.source.load(res);
+    });
   }
 
   onDeleteConfirm(event): void {
